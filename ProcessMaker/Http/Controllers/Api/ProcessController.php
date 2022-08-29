@@ -1073,6 +1073,8 @@ class ProcessController extends Controller
         // Trigger the start event
         try {
             $processRequest = WorkflowManager::triggerStartEvent($process, $event, $data);
+            $processRequest->do_not_sanitize = $this->getDoNotSanitizeFields($process);
+            $processRequest->save();
         } catch (Throwable $exception) {
             throw $exception;
 
@@ -1169,5 +1171,18 @@ class ProcessController extends Controller
         $validVersion = $hasVersion && method_exists(ImportProcess::class, "parseFileV{$decoded->version}");
 
         return $isDecoded && $validType && $validVersion;
+    }
+
+    private function getDoNotSanitizeFields($process)
+    {
+        $manager = app(ExportManager::class);
+        $screenIds = $manager->getDependenciesOfType(Screen::class, $process, []);
+        $doNotSanitizeFields = [];
+        foreach ($screenIds as $screenId) {
+            $doNotSanitizeFieldsForScreen = SanitizeHelper::getDoNotSanitizeFields($screenId);
+            $doNotSanitizeFields = array_unique(array_merge($doNotSanitizeFieldsForScreen, $doNotSanitizeFields));
+        }
+
+        return $doNotSanitizeFields;
     }
 }
