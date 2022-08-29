@@ -191,8 +191,11 @@ class SanitizeHelper
 
     public static function getDoNotSanitizeFields($screenId)
     {
-        $screen = Screen::findOrFail($screenId);
-        $doNotSanitizeFields = self::getExceptions((object) $screen);
+        $screen = Screen::find($screenId);
+        $doNotSanitizeFields = [];
+        if ($screen) {
+            $doNotSanitizeFields = self::getExceptions((object) $screen);
+        }
 
         return $doNotSanitizeFields;
     }
