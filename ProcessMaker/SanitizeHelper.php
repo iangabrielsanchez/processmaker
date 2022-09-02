@@ -60,7 +60,7 @@ class SanitizeHelper
 
     /**
      * Strip php and html tags
-     * 
+     *
      * @param string $string
      *
      * @return string
@@ -75,6 +75,7 @@ class SanitizeHelper
         $string = preg_replace('/<[a-zA-Z0-9]+[^>]*>/', '', $string);
         $string = preg_replace('/<\/[a-zA-Z0-9]+[^>]*>/', '', $string);
         $string = preg_replace('/<[a-zA-Z0-9]+[^>]*\/>/', '', $string);
+
         return $string;
     }
 

@@ -35,6 +35,8 @@ class SanitizeHelperTest extends TestCase
 
     public function testSingleRichTextSanitization()
     {
+        $this->markTestSkipped('FOUR-6653');
+
         // Prepare scenario ..
         $this->createScreen('tests/Fixtures/sanitize_single_rich_text_screen.json');
         $this->createProcess('tests/Fixtures/sanitize_single_task.bpmn');
@@ -60,6 +62,8 @@ class SanitizeHelperTest extends TestCase
 
     public function testRichTextSanitizationInsideNestedScreen()
     {
+        $this->markTestSkipped('FOUR-6653');
+
         // Prepare scenario ..
         $this->createScreen('tests/Fixtures/sanitize_single_rich_text_screen.json');
         $childScreen = $this->screen;
@@ -92,6 +96,8 @@ class SanitizeHelperTest extends TestCase
 
     public function testSingleRichTextSanitizationInsideLoop()
     {
+        $this->markTestSkipped('FOUR-6653');
+
         // Prepare scenario ..
         $this->createScreen('tests/Fixtures/sanitize_single_rich_text_inside_loop_screen.json');
         $this->createProcess('tests/Fixtures/sanitize_single_task_loop.bpmn');
@@ -118,6 +124,8 @@ class SanitizeHelperTest extends TestCase
 
     public function testRichTextSanitizationInsideLoopInsideNestedScreen()
     {
+        $this->markTestSkipped('FOUR-6653');
+
         // Prepare scenario ..
         $this->createScreen('tests/Fixtures/sanitize_single_rich_text_nested_loop_child_screen.json');
         $childScreen = $this->screen;
@@ -150,6 +158,8 @@ class SanitizeHelperTest extends TestCase
 
     public function testSingleRichTextTwoPagesSanitization()
     {
+        $this->markTestSkipped('FOUR-6653');
+
         // Prepare scenario ..
         $this->createScreen('tests/Fixtures/sanitize_single_rich_text_two_pages_screen.json');
         $this->createProcess('tests/Fixtures/sanitize_single_task_two_pages.bpmn');
@@ -177,6 +187,8 @@ class SanitizeHelperTest extends TestCase
 
     public function testSingleRichTextSanitizationWithNestedVariableName()
     {
+        $this->markTestSkipped('FOUR-6653');
+
         // Prepare scenario ..
         $this->createScreen('tests/Fixtures/sanitize_single_rich_text_nested_variable_name_screen.json');
         $this->createProcess('tests/Fixtures/sanitize_single_task.bpmn');
@@ -202,6 +214,8 @@ class SanitizeHelperTest extends TestCase
 
     public function testSingleRichTextSanitizationSameNameDifferentScope()
     {
+        $this->markTestSkipped('FOUR-6653');
+
         // Prepare scenario ..
         $this->createScreen('tests/Fixtures/sanitize_single_rich_text_same_name_different_scope_screen.json');
         $this->createProcess('tests/Fixtures/sanitize_single_task_loop.bpmn');
